@@ -101,11 +101,13 @@ header{
     width: 100%;
     margin: 0 0 0 auto;
 }
+
 nav{
     @include flex(space-between, center, row);
     flex-wrap: wrap;
     height: 8vh;
     min-height: 5.625rem;
+    max-height: 8rem;
     width: 100%;
     background-color: $color3;
     position: fixed;
@@ -150,7 +152,7 @@ nav{
         li.deployable::after{
             content: url(../images/icon_deployable.svg);
             position: absolute;
-            transform: translate(-30%, 42%); 
+            transform: translate(-30%, 1rem); 
             transition: transform 0.25s ease;
         }
         li.deployable:hover{
@@ -158,11 +160,14 @@ nav{
                 visibility: visible;
             }
         }
+        
         li.sub2:hover::after{
-            transform: translate(-35%, 460%); 
+            --translateY: calc(4vh + 5rem + 2rem);
+            transform: translate(-35%, var(--translateY)); 
         }
         li.sub3:hover::after{
-            transform: translate(-90%, 750%); 
+            --translateY: calc(4vh + 10rem + 3.625rem);
+            transform: translate(-90%, var(--translateY)); 
         }
     }
 }
@@ -176,6 +181,7 @@ nav{
         flex: 0 0 8vh;
         width: 8vh;
         min-width: 5.625rem;
+        max-width: 8rem;
         height: 100vh;
         background-color: white;
         border-right: 2px solid $color3;
@@ -196,7 +202,7 @@ nav{
         }
     }
     .content{
-        
+        height: 92vh;
         flex: 1 1 114.375rem;
         padding: 2.8rem 1.8rem 2.8rem calc(8vh + 1.8rem);
         transition: margin 0.4s ease;
@@ -204,19 +210,17 @@ nav{
 }
 
 footer{
+    position: fixed;
     width: 100vw;
-    height: 20vh;
-    div{
-        z-index: 9;
-        position: fixed;
-        width: 100%;
-        right: 0;
-        bottom: 0;
-        background: $gradient;
-        padding: 0 1.5rem 0 calc(8vh + 1.5rem);
-        @include flex(flex-end, center, row);
-        img{
-            margin: 0.8rem;
-        }
+    height: 10vh;
+    z-index: 9;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    background: $gradient;
+    padding: 0 1.5rem 0 calc(8vh + 1.5rem);
+    @include flex(flex-end, center, row);
+    img{
+        margin: 0.8rem;
     }
 }

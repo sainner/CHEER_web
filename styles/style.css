@@ -160,6 +160,7 @@ nav {
   flex-wrap: wrap;
   height: 8vh;
   min-height: 5.625rem;
+  max-height: 8rem;
   width: 100%;
   background-color: #F7F7F7;
   position: fixed;
@@ -215,17 +216,19 @@ nav ul li ul.submenu li {
 nav ul li.deployable::after {
   content: url(../images/icon_deployable.svg);
   position: absolute;
-  transform: translate(-30%, 42%);
+  transform: translate(-30%, 1rem);
   transition: transform 0.25s ease;
 }
 nav ul li.deployable:hover ul.submenu {
   visibility: visible;
 }
 nav ul li.sub2:hover::after {
-  transform: translate(-35%, 460%);
+  --translateY: calc(4vh + 5rem + 2rem);
+  transform: translate(-35%, var(--translateY));
 }
 nav ul li.sub3:hover::after {
-  transform: translate(-90%, 750%);
+  --translateY: calc(4vh + 10rem + 3.625rem);
+  transform: translate(-90%, var(--translateY));
 }
 
 .container {
@@ -240,6 +243,7 @@ nav ul li.sub3:hover::after {
   flex: 0 0 8vh;
   width: 8vh;
   min-width: 5.625rem;
+  max-width: 8rem;
   height: 100vh;
   background-color: white;
   border-right: 2px solid #F7F7F7;
@@ -263,18 +267,17 @@ nav ul li.sub3:hover::after {
   min-width: 5.625rem;
 }
 .container .content {
+  height: 92vh;
   flex: 1 1 114.375rem;
   padding: 2.8rem 1.8rem 2.8rem calc(8vh + 1.8rem);
   transition: margin 0.4s ease;
 }
 
 footer {
-  width: 100vw;
-  height: 20vh;
-}
-footer div {
-  z-index: 9;
   position: fixed;
+  width: 100vw;
+  height: 10vh;
+  z-index: 9;
   width: 100%;
   right: 0;
   bottom: 0;
@@ -285,7 +288,7 @@ footer div {
   align-items: center;
   flex-direction: row;
 }
-footer div img {
+footer img {
   margin: 0.8rem;
 }
 
@@ -304,14 +307,14 @@ footer div img {
 }
 .content div .img {
   width: 100%;
-  height: 39.6rem;
+  height: 50vh;
   margin: 0;
   position: relative;
   display: inline-block;
 }
 .content div .img img {
   width: 100%;
-  height: 39.6rem;
+  height: 50vh;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -356,7 +359,7 @@ footer div img {
   display: none;
 }
 .content .active {
-  min-width: 66rem;
+  min-width: 52vw;
 }
 .content .active .img::before,
 .content .active .img::after {

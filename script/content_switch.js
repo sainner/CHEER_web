@@ -1,38 +1,71 @@
+// 进入动画
+function animate(kind,targetUrl,windowHeight=window.innerHeight,windowWidth=window.innerWidth) {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const container = document.querySelector('.tranAniContatiner svg');
+    
+    let lineCount = Math.ceil(windowWidth / 60) ; // 根据窗口高度动态计算线条数量
+    let spacing = (windowHeight+windowWidth) * 1.1 / lineCount; // 计算间距
+    let stretch = windowWidth * 1.2; // 使用窗口宽度作为伸缩距离
+    let maxStrokeWidth = spacing; // 最大线条宽度
+    let minStrokeWidth = 2; // 最小线条宽度
+    if (kind === 'in') {
+      for (let i = 0; i < lineCount; i++) {
+          let line = document.createElementNS(svgNS, "line");
+          line.setAttribute("x1", "0");
+          line.setAttribute("y1", String(i * spacing));
+          line.setAttribute("x2", String(stretch));
+          line.setAttribute("y2", String(i * spacing - stretch));
+          line.setAttribute("stroke", "#212121");
+          line.setAttribute("stroke-width", String(maxStrokeWidth));
+          line.setAttribute("stroke-linecap", "round");
+          container.appendChild(line);
+          
+          anime({
+              targets: line,
+              strokeWidth: [maxStrokeWidth, 0], // 从宽到窄
+              easing: 'easeInOutSine',
+              duration: 1000,
+              complete: function(anim) {
+                  line.parentNode.removeChild(line);
+              }
+          });
+      }
+    }
+    else if (kind === 'out') {
+      for (let i = 0; i < lineCount; i++) {
+        let line = document.createElementNS(svgNS, "line");
+        line.setAttribute("x1", "0");
+        line.setAttribute("y1", String(i * spacing));
+        line.setAttribute("x2", "0"); // 初始状态为 0 长度
+        line.setAttribute("y2", String(i * spacing));
+        line.setAttribute("stroke", "#212121");
+        line.setAttribute("stroke-width", String(minStrokeWidth));
+        line.setAttribute("stroke-linecap", "round");
+        container.appendChild(line);
+    
+        anime({
+            targets: line,
+            x2: [0, stretch], // 使用stretch变量动态设置终点x坐标
+            y2: [i * spacing, i * spacing - stretch], // 根据间距和stretch调整终点y坐标
+            strokeWidth: [minStrokeWidth, maxStrokeWidth], // 动态改变线条宽度
+            easing: 'easeInOutSine',
+            duration: 1000,
+            complete: function(anim) {
+                // 如果当前动画是最后一个线条的动画，则执行页面跳转
+                if (i === lineCount - 1) {
+                    window.location.href = targetUrl;
+                }
+            }
+        });
+    }
+    }
+}
+
 window.onload = function() {
   // 进入动画
   setTimeout(function() {
     document.querySelector('.tranAniContatiner').style.background = 'rgba(0, 0, 0, 0)';
-    const svgNS = "http://www.w3.org/2000/svg";
-    const container = document.querySelector('.tranAniContatiner svg');
-    let lineCount = 45;
-    let spacing = 60; // 间距
-    let stretch = 2000; // 伸缩距离
-    
-    for (let i = 0; i < lineCount; i++) {
-      let line = document.createElementNS(svgNS, "line");
-      line.setAttribute("x1", "0");
-      line.setAttribute("y1", String(i * spacing));
-      line.setAttribute("x2", String(stretch));
-      line.setAttribute("y2", String(i * spacing - stretch));
-      line.setAttribute("stroke", "#212121");
-      line.setAttribute("stroke-width", "55"); // 初始宽度为宽
-      line.setAttribute("stroke-linecap", "round");
-      container.appendChild(line);
-      
-      anime({
-        targets: line,
-        /*
-        x1: [0, stretch], // 从设定的伸缩距离变为0
-        y1: [i * spacing, -stretch + i * spacing], // 使线条长度变为0
-        */
-        strokeWidth: [55, 0], // 从宽到窄
-        easing: 'easeInOutSine',
-        duration: 1000,
-        complete: function(anim) {
-          line.parentNode.removeChild(line);
-        }
-      });
-    }
+    animate('in', '');
   }, 0);
 };
 
@@ -76,37 +109,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     element.addEventListener('click', function(event) {
       event.preventDefault(); // 现在正确地阻止了链接的默认跳转行为
       const targetUrl = this.getAttribute('href'); // 获取目标页面的URL
-      const svgNS = "http://www.w3.org/2000/svg";
-      const container = document.querySelector('.tranAniContatiner svg');
-      let lineCount = 45;
-      let spacing = 60; // 间距
-      let stretch = 2000; // 伸缩距离
-      
-      for (let i = 0; i < lineCount; i++) {
-        let line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", "0");
-        line.setAttribute("y1", String(i * spacing));
-        line.setAttribute("x2", "0"); // 初始状态为 0 长度
-        line.setAttribute("y2", String(i * spacing));
-        line.setAttribute("stroke", "#212121");
-        line.setAttribute("stroke-width", "2");
-        line.setAttribute("stroke-linecap", "round");
-        container.appendChild(line);
-        anime({
-          targets: line,
-          x2: [0, stretch], // 假设视口的宽度
-          y2: [i * spacing, -stretch + i * spacing], // 根据线条间距调整
-          strokeWidth: [2, 60],
-          easing: 'easeInOutSine',
-          duration: 1000,
-          complete: function(anim) {
-            // 如果当前动画是最后一个线条的动画，则执行页面跳转
-            if (i === lineCount - 1) {
-              window.location.href = targetUrl;
-            }
-          }
-        });
-      }
+      animate('out', targetUrl); // 执行退出动画
     });
   }); 
 });
