@@ -1,0 +1,23 @@
+$header1: 2.5rem;
+$header2: 3rem;
+$header3: 2rem;
+$text: 1.5rem;
+
+$gradient: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 100%);
+
+$color1: #212121;
+$color2: #B71C1C;
+$color3: #F7F7F7;
+$color4: #E8F5E9;
+
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+  }
+
+@import "fonts";
+
+@import "global";
+@import "home_page";

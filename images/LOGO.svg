@@ -1,0 +1,58 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_24_3)">
+<rect x="400" y="200" width="200" height="400" fill="#F7F7F7"/>
+<rect x="200" y="200" width="200" height="200" fill="#F7F7F7"/>
+<mask id="mask0_24_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-103" y="-694" width="801" height="1997">
+<line x1="683.143" y1="148.142" x2="-88.8573" y2="920.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="56.1421" x2="-88.8573" y2="828.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="240.142" x2="-88.8573" y2="1012.14" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="332.142" x2="-88.8573" y2="1104.14" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="424.142" x2="-88.8573" y2="1196.14" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-35.8579" x2="-88.8573" y2="736.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-127.858" x2="-88.8573" y2="644.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="516.142" x2="-88.8572" y2="1288.14" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-679.858" x2="-88.8572" y2="92.1422" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-495.858" x2="-88.8573" y2="276.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-403.858" x2="-88.8572" y2="368.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-311.858" x2="-88.8572" y2="460.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-219.858" x2="-88.8572" y2="552.142" stroke="black" stroke-width="40"/>
+<line x1="683.143" y1="-587.858" x2="-88.8573" y2="184.142" stroke="black" stroke-width="40"/>
+</mask>
+<g mask="url(#mask0_24_3)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M-0.00012207 0H200H400V200H200V400H400V600H200H-0.00012207V400V200V0Z" fill="#212121"/>
+</g>
+<mask id="mask1_24_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-103" y="-666" width="787" height="1983">
+<line x1="676.071" y1="169.071" x2="-95.9289" y2="941.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="77.0711" x2="-95.9289" y2="849.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="261.071" x2="-95.9289" y2="1033.07" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="353.071" x2="-95.9289" y2="1125.07" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="445.071" x2="-95.9289" y2="1217.07" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-14.9289" x2="-95.9289" y2="757.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-106.929" x2="-95.9289" y2="665.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="537.071" x2="-95.9289" y2="1309.07" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-658.929" x2="-95.9289" y2="113.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-474.929" x2="-95.9289" y2="297.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-382.929" x2="-95.9289" y2="389.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-290.929" x2="-95.9289" y2="481.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-198.929" x2="-95.9289" y2="573.071" stroke="black" stroke-width="20"/>
+<line x1="676.071" y1="-566.929" x2="-95.9289" y2="205.071" stroke="black" stroke-width="20"/>
+</mask>
+<g mask="url(#mask1_24_3)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M600 0H400V200H200V400H400V600H600V400V200V0Z" fill="#212121"/>
+</g>
+<path d="M399.5 0H-0.00012207V399.5L399.5 0Z" fill="#212121"/>
+<rect x="200" width="200" height="200" fill="#212121"/>
+<rect x="400" width="200" height="200" fill="#F7F7F7"/>
+<mask id="mask2_24_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="400" y="-216" width="412" height="412">
+<circle cx="606" cy="-10" r="206" fill="#A14747"/>
+</mask>
+<g mask="url(#mask2_24_3)">
+<rect x="400" width="200" height="200" fill="#B71C1C"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_24_3">
+<rect width="600" height="600" fill="white"/>
+</clipPath>
+</defs>
+</svg>
