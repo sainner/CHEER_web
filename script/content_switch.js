@@ -11,7 +11,7 @@ function animate(kind,targetUrl,windowHeight=window.innerHeight,windowWidth=wind
     if (kind === 'in') {
       for (let i = 0; i < lineCount; i++) {
           let line = document.createElementNS(svgNS, "line");
-          line.setAttribute("x1", "0");
+          line.setAttribute("x1", String(-maxStrokeWidth));
           line.setAttribute("y1", String(i * spacing));
           line.setAttribute("x2", String(stretch));
           line.setAttribute("y2", String(i * spacing - stretch));
@@ -34,10 +34,10 @@ function animate(kind,targetUrl,windowHeight=window.innerHeight,windowWidth=wind
     else if (kind === 'out') {
       for (let i = 0; i < lineCount; i++) {
         let line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", "0");
-        line.setAttribute("y1", String(i * spacing));
-        line.setAttribute("x2", "0"); // 初始状态为 0 长度
-        line.setAttribute("y2", String(i * spacing));
+        line.setAttribute("x1", String(-maxStrokeWidth));
+        line.setAttribute("y1", String(i * spacing + maxStrokeWidth));
+        line.setAttribute("x2", String(-maxStrokeWidth)); // 初始状态为 0 长度
+        line.setAttribute("y2", String(i * spacing + maxStrokeWidth));
         line.setAttribute("stroke", "#212121");
         line.setAttribute("stroke-width", String(minStrokeWidth));
         line.setAttribute("stroke-linecap", "round");
@@ -45,8 +45,8 @@ function animate(kind,targetUrl,windowHeight=window.innerHeight,windowWidth=wind
     
         anime({
             targets: line,
-            x2: [0, stretch], // 使用stretch变量动态设置终点x坐标
-            y2: [i * spacing, i * spacing - stretch], // 根据间距和stretch调整终点y坐标
+            x2: [-maxStrokeWidth, stretch], // 使用stretch变量动态设置终点x坐标
+            y2: [i * spacing + maxStrokeWidth, i * spacing - stretch], // 根据间距和stretch调整终点y坐标
             strokeWidth: [minStrokeWidth, maxStrokeWidth], // 动态改变线条宽度
             easing: 'easeInOutSine',
             duration: 1000,
@@ -65,8 +65,8 @@ window.onload = function() {
   // 进入动画
   setTimeout(function() {
     document.querySelector('.tranAniContatiner').style.background = 'rgba(0, 0, 0, 0)';
-    animate('in', '');
   }, 0);
+  animate('in', '');
 };
 
 
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelector('.content').style.marginTop = '0';
     });
   }
-  
+
   //网页退出动画
   var tranAni = document.getElementsByClassName('nextPageLink');
   Array.from(tranAni).forEach(function(element) {
