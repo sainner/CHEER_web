@@ -1,5 +1,5 @@
 // 进入动画
-function animate(kind,targetUrl,windowHeight=window.innerHeight,windowWidth=window.innerWidth) {
+function tran_animate(kind,targetUrl,windowHeight=window.innerHeight,windowWidth=window.innerWidth) {
     const svgNS = "http://www.w3.org/2000/svg";
     const container = document.querySelector('.tranAniContatiner svg');
     
@@ -66,7 +66,7 @@ window.onload = function() {
   setTimeout(function() {
     document.querySelector('.tranAniContatiner').style.background = 'rgba(0, 0, 0, 0)';
   }, 0);
-  animate('in', '');
+  tran_animate('in', '');
 };
 
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     element.addEventListener('click', function(event) {
       event.preventDefault(); // 现在正确地阻止了链接的默认跳转行为
       const targetUrl = this.getAttribute('href'); // 获取目标页面的URL
-      animate('out', targetUrl); // 执行退出动画
+      tran_animate('out', targetUrl); // 执行退出动画
     });
   }); 
 });
