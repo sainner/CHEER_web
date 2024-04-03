@@ -187,40 +187,55 @@ nav ul {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  flex: 0 1 50rem;
   margin: 0 5rem 0 0;
   text-align: center;
   font-weight: bold;
 }
 nav ul li {
   height: 100%;
-  width: 10.625rem;
+  margin: 0 2rem;
   position: relative;
-  display: inline-block;
+  padding: 0 0.3rem;
 }
 nav ul li ul.submenu {
+  margin: 0 0;
+  width: 15rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
   font-weight: lighter;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   visibility: hidden;
-  transition: visibility 0.15s ease-in-out;
   transition: transform 0.2s ease;
-  position: fixed;
   padding-top: 4vh;
 }
 nav ul li ul.submenu li {
   padding: 0.5rem;
 }
+nav ul li#current {
+  background-color: #E8F5E9;
+}
+nav ul li#current::before {
+  z-index: -1;
+  content: "";
+  width: calc(100% + 2.5rem);
+  height: 6vh;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-image: url(../images/icon/currentPageMarker.svg);
+  background-size: cover;
+  background-position: center;
+}
 nav ul li.deployable::after {
-  content: url(../images/icon_deployable.svg);
+  content: url(../images/icon/icon_deployable.svg);
   position: absolute;
   transform: translate(-30%, 1rem);
   transition: transform 0.25s ease;
-}
-nav ul li.deployable:hover ul.submenu {
-  visibility: visible;
 }
 nav ul li.sub2:hover::after {
   --translateY: calc(4vh + 5rem + 2rem);
@@ -284,7 +299,6 @@ footer {
   height: 10vh;
   z-index: 9;
   width: 100%;
-  right: 0;
   bottom: 0;
   background: linear-gradient(to top, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 40%, rgba(255, 255, 255, 0) 100%);
   padding: 0 1.5rem 0 calc(8vh + 1.5rem);
@@ -295,6 +309,16 @@ footer {
 }
 footer img {
   margin: 0.8rem;
+}
+footer p {
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 2rem;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#footer_left {
+  justify-content: flex-start;
 }
 
 .homepage {
@@ -339,7 +363,7 @@ footer img {
   z-index: 1;
 }
 .homepage .news .img::after {
-  content: url(../images/icon_inactive.svg);
+  content: url(../images/icon/icon_inactive.svg);
   top: 50%;
   left: 50%;
   opacity: 1;
@@ -394,8 +418,86 @@ footer img {
   display: none;
 }
 
+#about_us {
+  padding: 2.8rem 2.8rem2 0.8rem calc(8vh + 2.8rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  overflow: scroll;
+  flex-wrap: wrap-reverse;
+}
+#about_us #info {
+  margin: 5rem;
+  flex: 6 1 30rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#about_us #info h1 {
+  padding: 1.5rem 2rem 0 2rem;
+  font-size: 8rem;
+  line-height: 7rem;
+}
+#about_us #info p {
+  padding-left: 2rem;
+  margin-top: 0.5rem;
+}
+#about_us #info .split {
+  margin-top: 4rem;
+}
+#about_us #info .time {
+  font-size: 2rem;
+  margin-top: 0;
+}
+#about_us #info .contact {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+#about_us #info .contact img {
+  margin-right: 1rem;
+}
+#about_us #groupPhoto {
+  margin: 5rem;
+  flex: 4 0 30rem;
+  min-width: 30rem;
+  max-width: 45rem;
+  aspect-ratio: 492/671;
+  will-change: transform;
+  position: relative;
+  perspective: 1000px;
+  background-image: url("/images/groupPhoto.jpg");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);
+}
+#about_us #groupPhoto #mask {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  will-change: transform;
+}
+
 /*
 @import "outputs_page";
 @import "members_page";
 @import "enrollment_page";
-*//*# sourceMappingURL=style.css.map */
+*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fadein {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}/*# sourceMappingURL=style.css.map */

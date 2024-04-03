@@ -10,7 +10,7 @@
         />
         <meta name="robots" content="Lab Website, Building technology, SJTU" />
         <link rel="stylesheet" href="styles/style.css" />
-        <link rel="icon" href="images/LOGO.svg" />
+        <link rel="icon" href="/images/icon/LOGO.svg" />
         <title>CHEER Lab | SJTU Building Technology Lab</title>
     </head>
     <body>
@@ -21,7 +21,7 @@
         <header>
             <nav>
                 <a href="index.html" class="LOGO nextPageLink"><div class="LOGO">
-                    <img id="logo" src="images/LOGO.svg" alt="LOGO" />
+                    <img id="logo" src="/images/icon/LOGO.svg" alt="LOGO" />
                     <p><span class="bold em">CHEER</span> <span class="light">Lab</span></p>
                 </div></a>
                 <ul>
@@ -61,12 +61,12 @@
             <section class="side_bar">
                 
                 <h1><span class="bold">HOME</span><span class="light"> PAGE</span></h1>
-                <img src="images/language_switcher.svg"/>
+                <img src="/images/icon/language_switcher.svg"/>
                 
             </section>
             <section class="content homepage">
-                <div class="news" id="news_01">
-                    <div class="img"><a href=""><img src="images/banner_1.jpg"/></a></div>
+                <div class="news fadein" id="news_01">
+                    <div class="img"><a href=""><img src="/images/banner_1.jpg"/></a></div>
                     <div class="text">
                         <a href="" class="text_hover nextPageLink" ><h2>
                             2023-2024学年<br/>
@@ -80,8 +80,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="news active" id="news_02">
-                    <div class="img"><a href=""><img src="images/banner_2.jpg"/></a></div>
+                <div class="news fadein active" id="news_02">
+                    <div class="img"><a href=""><img src="/images/banner_2.jpg"/></a></div>
                     <div class="text">
                         <a href="" class="text_hover nextPageLink" ><h2>
                             实验室组织参加<br/>
@@ -95,8 +95,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="news" id="news_03">
-                    <div class="img"><a href=""><img src="images/banner_3.jpg"/></a></div>
+                <div class="news fadein" id="news_03">
+                    <div class="img"><a href=""><img src="/images/banner_3.jpg"/></a></div>
                     <div class="text">
                         <a href="" class="text_hover nextPageLink" ><h2>
                             实验室23级研究生<br/>
@@ -110,8 +110,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="news" id="news_04">
-                    <div class="img"><a href=""><img src="images/banner_4.jpg"/></a></div>
+                <div class="news fadein" id="news_04">
+                    <div class="img"><a href=""><img src="/images/banner_4.jpg"/></a></div>
                     <div class="text">
                         <a href="" class="text_hover nextPageLink" ><h2>
                             胡啸<br/>
@@ -129,10 +129,25 @@
         </div>
     </body>
     <footer id="footer">
-        <img id="sjtu_logo" src="images/LOGO_SJTU.png" />
-        <img id="ds_logo" src="images/LOGO_DS.png" />
-        <img id="lab_logo" src="images/LOGO_FULL.svg" />
+        <img id="sjtu_logo" src="/images/icon/LOGO_SJTU.png" />
+        <img id="ds_logo" src="/images/icon/LOGO_DS.png" />
+        <img id="lab_logo" src="/images/icon/LOGO_FULL.svg" />
+        <p id="copyright">800 Dongchuan RD.Minhang District,Shanghai<br/>
+            ©2018 Dschool of SJTU.All rights reserved.沪交ICP备20180055</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="./script/general.js"></script>
+    <script>
+        //切换新闻内容
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const divs = Array.from(document.getElementsByClassName('news'));
+            const footerDiv = document.querySelector('footer div');
+            divs.forEach(div => {
+            div.addEventListener('click', function() {
+            divs.forEach(d => d.classList.remove('active'));
+            this.classList.add('active');
+            });
+        });
+    });
+    </script>
 </html>

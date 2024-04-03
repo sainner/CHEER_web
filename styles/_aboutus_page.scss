@@ -1,0 +1,54 @@
+#about_us{
+    padding: 2.8rem 2.8rem2.8rem calc(8vh + 2.8rem);
+    @include flex(center, center, row);
+    overflow: scroll;
+    flex-wrap: wrap-reverse;
+    #info{
+        margin: 5rem;
+        flex : 6 1 30rem;
+        @include flex(flex-start, flex-start, column);
+        h1{
+            padding: 1.5rem 2rem 0 2rem;
+            font-size: 8rem;
+            line-height: 7rem;
+        }
+        p{
+            padding-left: 2rem;
+            margin-top: 0.5rem;
+        }
+        .split{
+            margin-top: 4rem;
+        }
+        .time{
+            font-size: 2rem;
+            margin-top: 0;
+        }
+        .contact{
+            @include flex(flex-start, center, row);
+            img{
+                margin-right: 1rem;
+            }
+        }
+    }
+    #groupPhoto{
+        margin: 5rem;
+        flex : 4 0 30rem;
+        min-width: 30rem;
+        max-width: 45rem;
+        aspect-ratio: 492 / 671;
+        will-change: transform;
+        position: relative;
+        perspective: 1000px; 
+        background-image: url('/images/groupPhoto.jpg');
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);
+        #mask{
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            will-change: transform;
+        }
+    }
+}

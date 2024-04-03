@@ -65,38 +65,15 @@ document.addEventListener('mousemove', (event) => {
 });
 // 更新摄像机朝向的函数
 function updateCamera() {
-    let isMouseOver = true;
-    let targetRotationX = 0;
-    let targetRotationY = 0;
-    if (isMouseOver) {
-        // 当鼠标在窗口内部时，根据鼠标位置更新目标旋转
-        const targetRotationX = originalCameraRotation.x - (mouseY * 0.0001);
-        const targetRotationY = originalCameraRotation.y - (mouseX * 0.0001);
+    // 当鼠标在窗口内部时，根据鼠标位置更新目标旋转
+    const targetRotationX = originalCameraRotation.x - (mouseY * 0.0001);
+    const targetRotationY = originalCameraRotation.y - (mouseX * 0.0001);
 
-        // 使用一个较小的过渡因子来平滑更新摄像机旋转，避免过快跟随鼠标导致的抖动
-        camera.rotation.x += (targetRotationX - camera.rotation.x) * 0.01;
-        camera.rotation.y += (targetRotationY - camera.rotation.y) * 0.01;
-    } else {
-        // 当鼠标不在窗口内时，平滑过渡摄像机旋转回初始状态或维持当前状态，视具体效果而定
-        // 这里示例维持当前状态，可以根据需要调整
-        camera.rotation.x += (targetRotationX - camera.rotation.x) * 0.01;
-        camera.rotation.y += (targetRotationY - camera.rotation.y) * 0.01;
-    }
+    // 使用一个较小的过渡因子来平滑更新摄像机旋转，避免过快跟随鼠标导致的抖动
+    camera.rotation.x += (targetRotationX - camera.rotation.x) * 0.01;
+    camera.rotation.y += (targetRotationY - camera.rotation.y) * 0.01;
 }
 
-document.addEventListener('mousemove', (event) => {
-    if (isMouseOver) {
-        mouseX = (event.clientX - window.innerWidth / 2);
-        mouseY = (event.clientY - window.innerHeight / 2);
-        // 更新目标旋转而不是立即应用
-        targetRotationY = originalCameraRotation.y - (mouseX * 0.0005);
-        targetRotationX = originalCameraRotation.x - (mouseY * 0.0005);
-    }
-});
-
-document.addEventListener('mouseleave', () => {
-    isMouseOver = false;
-});
 
 // 动画函数
 function animate() {
@@ -116,7 +93,6 @@ function animate() {
             totalDistance = 0; // 重置移动距离
         }
     }
-
     renderer.render(scene, camera);
 }
 
