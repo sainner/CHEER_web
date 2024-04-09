@@ -33,7 +33,7 @@ function onWindowResize() {
 // 从gltf.scene中获取模型
 const loader = new THREE.GLTFLoader();
 let city; 
-loader.load('/model/city.glb', function(gltf) {
+loader.load('../model/city.glb', function(gltf) {
     scene.add(gltf.scene);
     // 假设模型是加载的场景中的第一个子对象
     scene.traverse(function(child) {
