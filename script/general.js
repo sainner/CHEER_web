@@ -108,15 +108,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
   // 导航栏折叠动画
-    //悬停在可折叠标签上时增加.content上的margin及添加浮入浮出动画
+    //悬停在可折叠标签上时腾出空间及添加浮入浮出动画
   var elements = document.getElementsByClassName('deployable');
   for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('mouseenter', function() {
-      document.querySelector('.content').style.marginTop = '15rem';
+      document.querySelector('.content').style.transform = 'translateY(16rem)';
       fade(this.querySelector('.submenu'),'in');
     });
     elements[i].addEventListener('mouseleave', function() {
-      document.querySelector('.content').style.marginTop = '0';
+      document.querySelector('.content').style.transform = 'translateY(0)';
       fade(this.querySelector('.submenu'),'out');
     });
   }
