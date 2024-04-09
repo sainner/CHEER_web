@@ -503,9 +503,6 @@ footer p {
 }
 
 @media only screen and (max-width: 780px) {
-  nav ul {
-    font-size: 0.1rem;
-  }
   .active {
     order: 4;
   }

@@ -47,11 +47,6 @@ $color4: #E8F5E9;
 //响应性
 
 @media only screen and (max-width: 780px) {
-  nav{
-    ul{
-      font-size: 0.1rem;
-    }
-  }
   .active{
     order: 4;
   }
