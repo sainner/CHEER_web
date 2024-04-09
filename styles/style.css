@@ -424,12 +424,12 @@ footer p {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  overflow: scroll;
   flex-wrap: wrap-reverse;
+  overflow: auto;
 }
 #about_us #info {
   margin: 5rem;
-  flex: 6 1 30rem;
+  flex: 8 1 30rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -462,8 +462,7 @@ footer p {
 }
 #about_us #groupPhoto {
   margin: 5rem;
-  flex: 4 0 30rem;
-  min-width: 30rem;
+  flex: 4 1 30rem;
   max-width: 45rem;
   aspect-ratio: 492/671;
   will-change: transform;
@@ -500,4 +499,12 @@ footer p {
 .fadein {
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*
+@media only screen and (max-width: 800px) {
+  #about_us{
+    overflow: scroll;
+  }
+}
+*//*# sourceMappingURL=style.css.map */

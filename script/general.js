@@ -243,8 +243,8 @@ function perspective(container_id, mask_id) {
     const rotateX = y / bounds.height * 30; // 控制旋转角度
     const rotateY = x / bounds.width * -30; // 控制旋转角度
 
-    const parallaxX = x / bounds.width * 20; // 控制视差移动距离
-    const parallaxY = y / bounds.height * 20; // 控制视差移动距离
+    const parallaxX = x / bounds.width * 30; // 控制视差移动距离
+    const parallaxY = y / bounds.height * 30; // 控制视差移动距离
 
     anime({
       targets: container,

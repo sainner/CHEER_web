@@ -43,3 +43,12 @@ $color4: #E8F5E9;
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;
 }
+
+//响应性
+/*
+@media only screen and (max-width: 800px) {
+  #about_us{
+    overflow: scroll;
+  }
+}
+*/

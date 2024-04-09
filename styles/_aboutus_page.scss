@@ -1,11 +1,11 @@
 #about_us{
     padding: 2.8rem 2.8rem2.8rem calc(8vh + 2.8rem);
     @include flex(center, center, row);
-    overflow: scroll;
     flex-wrap: wrap-reverse;
+    overflow: auto;
     #info{
         margin: 5rem;
-        flex : 6 1 30rem;
+        flex : 8 1 30rem;
         @include flex(flex-start, flex-start, column);
         h1{
             padding: 1.5rem 2rem 0 2rem;
@@ -32,8 +32,7 @@
     }
     #groupPhoto{
         margin: 5rem;
-        flex : 4 0 30rem;
-        min-width: 30rem;
+        flex : 4 1 30rem;
         max-width: 45rem;
         aspect-ratio: 492 / 671;
         will-change: transform;
