@@ -47,12 +47,77 @@ $color4: #E8F5E9;
 //响应性
 
 @media only screen and (max-width: 780px) {
-  .active{
-    order: 4;
+  .side_bar{
+    visibility: hidden;
   }
+  nav{
+    ul{
+      li{
+        padding:0;
+        margin:0 0.5rem;
+      }
+    }
+  }
+  .container .content{
+    justify-content: center;
+    padding: 2.8rem 1.8rem 2.8rem 1.8rem;
+  }
+  footer{
+    background-color: $color3;
+    position: static;
+    flex-wrap: wrap;
+    height: auto;
+    img{
+      flex: 0 1 1rem;
+      align-items: center;
+    }
+    p{
+      flex: 1 1 1000rem;
+      border-left: none;
+      padding: 1rem 0 2rem 0;
+    }
+  }
+
+  //homepage
+  .homepage{
+    .news{
+      flex: 0 0 90vw;
+      margin: 0;
+      .img{
+        height: 30vh;
+        img{
+          height: 100%;
+        }
+      }
+      .img::after, .img::before{
+        opacity: 0;
+      }
+    }
+    .active{
+      flex: 0 0 90vw;
+      .text{
+        margin: 1rem 0 4rem 0;
+        padding: 2rem 0 0 1rem;
+        width: 100%;
+        border-left: 2px solid $color2;
+        h2{
+            font-size: 1.25rem;
+            font-weight: normal;
+        }
+        .optional{
+            display: none;
+        }
+      }
+    }
+  }
+
+  //aboutus
   #about_us{
     #groupPhoto{
-      margin: 10rem 5rem;
+      margin: 1rem;
+    }
+    #info{
+      margin: 1rem 0;
     }
   }
 }

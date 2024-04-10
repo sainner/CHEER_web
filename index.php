@@ -1,69 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Homepage of CHEER Lab, design school, Shanghai Jiaotong University"
-        />
-        <meta name="robots" content="Lab Website, Building technology, SJTU" />
-        <link rel="stylesheet" href="./styles/style.css" />
-        <link rel="icon" href="./images/icon/LOGO.svg" />
-        <title>CHEER Lab | SJTU Building Technology Lab</title>
-    </head>
+    <?php 
+    require "includes/config.php";
+    $current_page = basename($_SERVER['PHP_SELF']);
+    include_once './includes/templates/head.php';
+    ?>
     <body>
         <div class="tranAniContatiner">
             <svg preserveAspectRatio="none" width="100%" height="100%">
             </svg>
         </div>
-        <header>
-            <nav>
-                <a href="./index.html" class="LOGO nextPageLink"><div class="LOGO">
-                    <img id="logo" src="./images/icon/LOGO.svg" alt="LOGO" />
-                    <p><span class="bold em">CHEER</span> <span class="light">Lab</span></p>
-                </div></a>
-                <ul>
-                    <li><a href="./pages/about_us.html" class="text_hover nextPageLink" >
-                        关于CHEER</a></li>
-                    <li class="deployable sub2">
-                        <a href="./pages/outputs.html" class="text_hover nextPageLink" >
-                        研究成果</a>
-                        <ul class="submenu">
-                            <li><a href="#" class="text_hover nextPageLink">
-                                论文成果</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                实践成果</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="./pages/news.html" class="text_hover nextPageLink" >
-                        最新动态</a></li>
-                    <li class="deployable sub3"><a href="./pages/members.html" class="text_hover nextPageLink" >
-                        团队成员</a>
-                        <ul class="submenu">
-                            <li><a href="#" class="text_hover nextPageLink">
-                                在职教师</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                硕士研究生</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                博士研究生</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                博士后</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="./pages/enrollment.html" class="text_hover nextPageLink" >
-                        招生招聘</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php include_once './includes/templates/header.php';?>
         <div class="container">
-            <section class="side_bar">
-                
-                <h1><span class="bold">HOME</span><span class="light"> PAGE</span></h1>
-                <img src="./images/icon/language_switcher.svg"/>
-                
-            </section>
+            <?php include_once './includes/templates/sidebar.php';?>
             <section class="content homepage">
                 <div class="news fadein" id="news_01">
                     <div class="img"><a href=""><img src="./images/banner_1.jpg"/></a></div>
@@ -128,13 +75,10 @@
             </section>
         </div>
     </body>
-    <footer id="footer">
-        <img id="sjtu_logo" src="./images/icon/LOGO_SJTU.png" />
-        <img id="ds_logo" src="./images/icon/LOGO_DS.png" />
-        <img id="lab_logo" src="./images/icon/LOGO_FULL.svg" />
-        <p id="copyright">800 Dongchuan RD.Minhang District,Shanghai<br/>
-            ©2018 Dschool of SJTU.All rights reserved.沪交ICP备20180055</p>
-    </footer>
+    <?php
+    $footer_position = 'footer_right';
+    include_once './includes/templates/footer.php';
+    ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="./script/general.js"></script>
     <script>

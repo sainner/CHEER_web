@@ -330,9 +330,9 @@ footer p {
 }
 .homepage .news {
   overflow: visible;
-  flex: 1 1 10rem;
+  flex: 1 1 5rem;
   min-width: 3rem;
-  margin: 0 1rem 0 1rem;
+  margin: 0 1rem;
   transition: min-width 0.5s ease-in-out;
 }
 .homepage .news .img {
@@ -503,10 +503,65 @@ footer p {
 }
 
 @media only screen and (max-width: 780px) {
-  .active {
-    order: 4;
+  .side_bar {
+    visibility: hidden;
+  }
+  nav ul li {
+    padding: 0;
+    margin: 0 0.5rem;
+  }
+  .container .content {
+    justify-content: center;
+    padding: 2.8rem 1.8rem 2.8rem 1.8rem;
+  }
+  footer {
+    background-color: #F7F7F7;
+    position: static;
+    flex-wrap: wrap;
+    height: auto;
+  }
+  footer img {
+    flex: 0 1 1rem;
+    align-items: center;
+  }
+  footer p {
+    flex: 1 1 1000rem;
+    border-left: none;
+    padding: 1rem 0 2rem 0;
+  }
+  .homepage .news {
+    flex: 0 0 90vw;
+    margin: 0;
+  }
+  .homepage .news .img {
+    height: 30vh;
+  }
+  .homepage .news .img img {
+    height: 100%;
+  }
+  .homepage .news .img::after, .homepage .news .img::before {
+    opacity: 0;
+  }
+  .homepage .active {
+    flex: 0 0 90vw;
+  }
+  .homepage .active .text {
+    margin: 1rem 0 4rem 0;
+    padding: 2rem 0 0 1rem;
+    width: 100%;
+    border-left: 2px solid #B71C1C;
+  }
+  .homepage .active .text h2 {
+    font-size: 1.25rem;
+    font-weight: normal;
+  }
+  .homepage .active .text .optional {
+    display: none;
   }
   #about_us #groupPhoto {
-    margin: 10rem 5rem;
+    margin: 1rem;
+  }
+  #about_us #info {
+    margin: 1rem 0;
   }
 }/*# sourceMappingURL=style.css.map */
