@@ -160,62 +160,64 @@ nav.addEventListener('mouseleave', enableScroll);
 
 
 
-//绘制扇形
 function addSectorToCorner(elementSelector, corner, size) {
-  // 查询目标元素
-  const element = document.querySelector(elementSelector);
-  if (!element) {
+  // 查询目标元素列表
+  const elements = document.querySelectorAll(elementSelector);
+  if (elements.length === 0) {
     console.error('指定的元素未找到');
     return;
   }
 
-  // 创建 SVG 元素
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("width", size);
-  svg.setAttribute("height", size);
-  svg.style.position = 'absolute';
-  svg.style.zIndex = '-1';
+  elements.forEach(element => {
+    // 创建 SVG 元素
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", size);
+    svg.setAttribute("height", size);
+    svg.style.position = 'absolute';
+    svg.style.zIndex = '-1';
 
-  //通过函数绘制不同扇形
-  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  let d = '';
+    // 通过函数绘制不同扇形
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    let d = '';
 
-  // 根据角落位置调整 SVG 定位
-  switch (corner.toLowerCase()) {
-    case '左上':
-      svg.style.top = '0';
-      svg.style.left = '0';
-      d = `M 0 0 L ${size} 0 A ${size} ${size} 0 0 1 0 ${size} Z`;
-      break;
-    case '右上':
-      svg.style.top = '0';
-      svg.style.right = '0';
-      d = `M ${size} 0 L ${size} ${size} A ${size} ${size} 0 0 1 ${size} 0 Z`;
-      break;
-    case '左下':
-      svg.style.bottom = '0';
-      svg.style.left = '0';
-      d = `M 0 ${size} L 0 0 A ${size} ${size} 0 0 1 0 ${size} Z`;
-      break;
-    case '右下':
-      svg.style.bottom = '0';
-      svg.style.right = '0';
-      d = `M ${size} ${size} L 0 ${size} A ${size} ${size} 0 0 1 ${size} ${size} Z`;
-      break;
-    default:
-      console.error('未知的角落位置');
-      return;
-  }
+    // 根据角落位置调整 SVG 定位
+    switch (corner.toLowerCase()) {
+      case '左上':
+        svg.style.top = '0';
+        svg.style.left = '0';
+        d = `M 0 0 L ${size} 0 A ${size} ${size} 0 0 1 0 ${size} Z`;
+        break;
+      case '右上':
+        svg.style.top = '0';
+        svg.style.right = '0';
+        d = `M ${size} 0 L ${size} ${size} A ${size} ${size} 0 0 1 0 0 Z`;
+        break;
+      case '左下':
+        svg.style.bottom = '0';
+        svg.style.left = '0';
+        d = `M 0 ${size} L 0 0 A ${size} ${size} 0 0 1 ${size} ${size} Z`;
+        break;
+      case '右下':
+        svg.style.bottom = '0';
+        svg.style.right = '0';
+        d = `M ${size} ${size} L 0 ${size} A ${size} ${size} 0 0 1 ${size} 0 Z`;
+        break;
+      default:
+        console.error('未知的角落位置');
+        return;
+    }
 
-  // 设置路径属性
-  path.setAttribute("d", d);
-  path.setAttribute("fill", "#B71C1C"); // 或者使用具体的颜色代码
+    // 设置路径属性
+    path.setAttribute("d", d);
+    path.setAttribute("fill", "#B71C1C"); // 或者使用具体的颜色代码
 
-  // 将路径添加到 SVG 并将 SVG 添加到目标元素
-  svg.appendChild(path);
-  element.style.position = 'relative'; // 确保父元素能够容纳绝对定位的 SVG
-  element.appendChild(svg);
-};
+    // 将路径添加到 SVG 并将 SVG 添加到目标元素
+    svg.appendChild(path);
+    element.style.position = 'relative'; // 确保父元素能够容纳绝对定位的 SVG
+    element.appendChild(svg);
+  });
+}
+
 
 //平滑回到原位置
 transToOrigin = function(element_id, duration = 1000) {
@@ -269,3 +271,36 @@ function perspective(container_id, mask_id) {
     transToOrigin(`#${mask_id}`);  
   });
 };
+
+
+//在box中绘制斜线
+function drawSlashes(classname, stoke_color = "#ffca28", line_tensity=60){
+  const containers = document.querySelectorAll(`.${classname}`);
+  containers.forEach(container => {
+    const existingSvg = container.querySelector('svg');
+    if (existingSvg) {
+      container.removeChild(existingSvg);
+    }
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+    container.setAttribute("style", `position: relative; z-index: -2;`);
+    svg = container.appendChild(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
+    svg.setAttribute("style", `display: block; position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%;`);
+    let lineCount = Math.ceil(width / line_tensity) ;
+    let spacing = (height + width) * 1.1 / lineCount;
+    let length_projected = height ;
+    let strokeWidth = spacing / 3;
+    let offset = strokeWidth / 2;
+    
+    for(let i = 0; i < lineCount; i++){
+        let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", String(offset + i*spacing));
+        line.setAttribute("y1", String(-offset));
+        line.setAttribute("x2", String(-offset + i*spacing - length_projected));
+        line.setAttribute("y2", String(offset + length_projected));
+        line.setAttribute("stroke", `${stoke_color}`);
+        line.setAttribute("stroke-width", String(strokeWidth));
+        svg.appendChild(line);
+      }
+  });
+}

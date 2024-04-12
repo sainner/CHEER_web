@@ -1,7 +1,8 @@
-.homepage{
+#homepage{
+    padding: 2.8rem 1.8rem 2.8rem calc(8vh + 1.8rem);
     @include flex(space-between, flex-start, row);
     flex-wrap: wrap;
-    overflow: scroll;
+    overflow: hidden;
     .news{
         overflow: visible;
         flex: 1 1 5rem;

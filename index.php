@@ -11,7 +11,7 @@
         <?php include_once './includes/templates/header.php';?>
         <div class="container">
             <?php include_once './includes/templates/sidebar.php';?>
-            <section class="content homepage">
+            <section class="content" id="homepage">
                 <div class="news fadein" id="news_01">
                     <div class="img"><a href=""><img src="./images/banner_1.jpg"/></a></div>
                     <div class="text">

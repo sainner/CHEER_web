@@ -1,8 +1,6 @@
 #about_us{
-    padding: 2.8rem 2.8rem2.8rem calc(8vh + 2.8rem);
     @include flex(center, center, row);
     flex-wrap: wrap-reverse;
-    overflow: auto;
     #info{
         margin: 5rem;
         flex : 8 1 30rem;

@@ -1,10 +1,58 @@
-.outputsBox{
-    width: 100%;
-    height: 100%;
-    @include flex(center, center, row);
-    .journalBox{
-        width: 200rem;
-        height: 20rem;
-        background-color: #1b1e2b;
+#outputs{
+    overflow-y: auto;
+    width: 100vw;
+}
+.articlesBox{
+    width: 65vw;
+    background-color: rgba(247, 247, 247, 0.2);
+    z-index: -10;
+    padding: 4rem 0;
+    $padding: 4rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 0 6rem rgba(0,0,0,0.1);
+    outline: 0.1rem solid white;
+    outline-offset: -0.1rem;
+    transition: all 0.2s ease-in-out;
+    h2{
+        line-height: 3.3rem;
+        margin-bottom: 1rem;
+        padding: 0 $padding;
     }
+    .authors{
+        font-size: 1.2rem;
+        color: $color2;
+        line-height: 1.2rem;
+        margin-bottom: 2rem;
+        padding: 0 $padding;
+    }
+    .journalBox{
+        width: 100%;
+        margin-bottom: 4rem;
+        padding: 0.5rem calc(1rem + $padding);
+        .journalName{
+            font-size: 1.2rem;
+            line-height: 1.4rem;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .journalDetails{
+            font-size: 1rem;
+            line-height: 1rem;
+            color: $color2;
+            .year{
+                font-weight: bold;
+            }
+        }
+    }
+    .abstract{
+        padding: 0 $padding;
+    }
+}
+
+.articlesBox:hover{
+    background-color: rgba(247, 247, 247, 0.6);
+    outline: 0.3rem solid $color2;
+    outline-offset: -0.3rem;
+    box-shadow: 0 0 8rem rgba(0,0,0,0.2);
+    backdrop-filter: blur(1rem);
 }

@@ -1,77 +1,51 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Outputs page of CHEER Lab"
-        />
-        <meta name="robots" content="Lab Website, Building technology, SJTU, about_us" />
-        <link rel="stylesheet" href="/styles/style.css" />
-        <link rel="icon" href="/images/LOGO.svg" />
-        <title>CHEER Lab | SJTU Building Technology Lab</title>
-    </head>
+<?php 
+    require "../includes/config.php";
+    $current_page = basename($_SERVER['PHP_SELF']);
+    include '../includes/templates/head.php';
+    ?>
     <body>
         <div class="tranAniContatiner">
             <svg preserveAspectRatio="none" width="100%" height="100%">
             </svg>
         </div>
-        <header>
-            <nav>
-                <a href="/index.html" class="LOGO nextPageLink"><div class="LOGO">
-                    <img id="logo" src="/images/LOGO.svg" alt="LOGO" />
-                    <p><span class="bold em">CHEER</span> <span class="light">Lab</span></p>
-                </div></a>
-                <ul>
-                    <li><a href="/pages/about_us.html" class="text_hover nextPageLink" >
-                        关于CHEER</a></li>
-                    <li class="deployable sub2">
-                        <a href="/pages/outputs.html" class="text_hover nextPageLink currentPageLink" >
-                        研究成果</a>
-                        <ul class="submenu">
-                            <li><a href="#" class="text_hover nextPageLink">
-                                论文成果</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                实践成果</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/pages/news.html" class="text_hover nextPageLink" >
-                        最新动态</a></li>
-                    <li class="deployable sub3"><a href="/pages/members.html" class="text_hover nextPageLink" >
-                        团队成员</a>
-                        <ul class="submenu">
-                            <li><a href="#" class="text_hover nextPageLink">
-                                在职教师</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                硕士研究生</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                博士研究生</a></li>
-                            <li><a href="#" class="text_hover nextPageLink">
-                                博士后</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/pages/enrollment.html" class="text_hover nextPageLink" >
-                        招生招聘</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php include_once '../includes/templates/header.php';?>
         <div class="container">
-            <section class="side_bar">
-                <h1><span class="light">RESEARCH</span><span class="bold"> OUTPUTS</span></h1>
-                <img src="/images/language_switcher.svg"/>
+            <?php include_once '../includes/templates/sidebar.php';?>
+            <section class="content" id="outputs">
+            <article class="articlesBox">
+                <h2>Research on the application of quantum computing in the discovery of new materials</h2>
+                <p class="authors">Can Liao, Chad E. Hoyer, Rahoul Banerjee Ghosh, Andrew J. Jenkins, Stefan Knecht, Michael J. Frisch, and Xiaosong Li</p>
+                <div class="journalBox">
+                    <p class="journalName">The Journal of Physical Chemistry A</p>
+                    <p class="journalDetails"><span class="year">2024</span> ,<span>383, 6687,1118-1122</span></p>
+                </div>
+                <p class="abstract">This research was co-authored by an interdisciplinary team from the Future Lab to explore the potential of quantum computing technologies in the field of novel materials discovery. With the rapid development of quantum computing technology, it has shown revolutionary application prospects in many scientific research fields, especially in the design and discovery of new materials, quantum computing provides an unprecedented computing power and efficiency.By constructing an efficient quantum algorithm, this study successfully simulates the quantum behavior of complex materials, which provides a new way to understand the intrinsic properties of materials and accelerate the design of new materials. The research team has focused on overcoming the key technical problems of quantum computing in dealing with large-scale material database search, material property prediction, and exploration of the synthesis path of new materials, which has significantly improved the efficiency and accuracy of new material discovery.</p>
+            </article>
+            <article class="articlesBox">
+                <h2>Research on the application of quantum computing in the discovery of new materials</h2>
+                <p class="authors">Can Liao, Chad E. Hoyer, Rahoul Banerjee Ghosh, Andrew J. Jenkins, Stefan Knecht, Michael J. Frisch, and Xiaosong Li</p>
+                <div class="journalBox">
+                    <p class="journalName">The Journal of Physical Chemistry A</p>
+                    <p class="journalDetails"><span class="year">2024</span> ,<span>383, 6687,1118-1122</span></p>
+                </div>
+                <p class="abstract">This research was co-authored by an interdisciplinary team from the Future Lab to explore the potential of quantum computing technologies in the field of novel materials discovery. With the rapid development of quantum computing technology, it has shown revolutionary application prospects in many scientific research fields, especially in the design and discovery of new materials, quantum computing provides an unprecedented computing power and efficiency.By constructing an efficient quantum algorithm, this study successfully simulates the quantum behavior of complex materials, which provides a new way to understand the intrinsic properties of materials and accelerate the design of new materials. The research team has focused on overcoming the key technical problems of quantum computing in dealing with large-scale material database search, material property prediction, and exploration of the synthesis path of new materials, which has significantly improved the efficiency and accuracy of new material discovery.</p>
+            </article>
             </section>
-            <section class="content about_us">
-                
-            </section>
+            <div id="modelContainer"></div>
         </div>
     </body>
-    <footer id="footer">
-        <img id="sjtu_logo" src="/images/LOGO_SJTU.png" />
-        <img id="ds_logo" src="/images/LOGO_DS.png" />
-        <img id="lab_logo" src="/images/LOGO_FULL.svg" />
-    </footer>
+    <?php
+    $footer_position = 'footer_right';
+    include_once '../includes/templates/footer.php';
+    ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="/script/content_switch.js"></script>
+    <script src="https://unpkg.com/three@0.125.2/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.125.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="../script/general.js"></script>
+    <script src="../script/modelController.js"></script>
+    <script>
+        drawSlashes("journalBox", "white", 15);
+        window.addEventListener('resize', function() {drawSlashes("journalBox", "white", 15);});
+        addSectorToCorner('.articlesBox', '右上', '80');
+    </script>
 </html>

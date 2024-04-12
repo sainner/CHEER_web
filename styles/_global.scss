@@ -133,6 +133,7 @@ nav{
         font-weight: bold;
         z-index: -2;
         li{
+            text-wrap: nowrap;
             margin: 0 2rem;
             position: relative;
             padding: 0 0.3rem;
@@ -216,9 +217,10 @@ nav{
     }
     .content{
         height: 92vh;
-        padding: 2.8rem 1.8rem 2.8rem calc(8vh + 1.8rem);
+        padding: 2.8rem 2.8rem 2.8rem max(5.625rem, calc(8vh + 2.8rem));
         transform: translateY(0);
         transition: transform 0.4s ease;
+        overflow-y: auto;
     }
     #modelContainer{
         position: fixed;
