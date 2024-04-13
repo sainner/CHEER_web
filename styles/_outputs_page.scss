@@ -2,13 +2,19 @@
     overflow-y: auto;
     width: 100vw;
 }
-.articlesBox{
+.articleBoxWithFigures{
+    width: 100%;
+    margin-bottom: 3rem;
+    @include flex(flex-start, flex-start, row)
+}
+.articleBox{
+    flex-shrink: 1;
+    flex-grow: 0;
     width: 65vw;
     background-color: rgba(247, 247, 247, 0.2);
     z-index: -10;
     padding: 4rem 0;
-    $padding: 4rem;
-    margin-bottom: 1.8rem;
+    $padding: 4.5rem;
     box-shadow: 0 0 6rem rgba(0,0,0,0.1);
     outline: 0.1rem solid white;
     outline-offset: -0.1rem;
@@ -28,7 +34,7 @@
     .journalBox{
         width: 100%;
         margin-bottom: 4rem;
-        padding: 0.5rem calc(1rem + $padding);
+    padding: 0.5rem calc(1rem + $padding);
         .journalName{
             font-size: 1.2rem;
             line-height: 1.4rem;
@@ -49,10 +55,24 @@
     }
 }
 
-.articlesBox:hover{
-    background-color: rgba(247, 247, 247, 0.6);
-    outline: 0.3rem solid $color2;
-    outline-offset: -0.3rem;
-    box-shadow: 0 0 8rem rgba(0,0,0,0.2);
-    backdrop-filter: blur(1rem);
+.articleBoxWithFigures:hover{
+    .articleBox{
+        background-color: rgba(247, 247, 247, 0.6);
+        outline: 0.3rem solid $color2;
+        outline-offset: -0.3rem;
+        box-shadow: 0 0 8rem rgba(0,0,0,0.2);
+        backdrop-filter: blur(0.2rem);
+    }
+}
+
+.figures{
+    margin-left: 1.5rem;
+    flex: 1 1 0;
+    @include flex(flex-start, flex-start, column);
+    img{
+        max-width: 30rem;
+        width: 100%;
+        outline: 0.1rem solid white;
+        outline-offset: -0.1rem;
+    }
 }

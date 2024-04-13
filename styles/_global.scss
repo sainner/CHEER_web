@@ -107,7 +107,7 @@ nav{
     flex-wrap: wrap;
     //height: 8vh;
     min-height: 5.625rem;
-    //max-height: 8rem;
+    max-height: 8rem;
     width: 100%;
     background-color: $color3;
     position: sticky;
@@ -117,6 +117,8 @@ nav{
         @include flex(flex-start, center, row);
         flex: 1 1 5.625rem;
         height: 8vh;
+        min-height: 5.625rem;
+        max-height: 8rem;
         img{
             height: 100%;
         }
@@ -129,6 +131,8 @@ nav{
         @include flex(space-between, center, row);
         margin: 0 3rem;
         height: 8vh;
+        min-height: 5.625rem;
+        max-height: 8rem;
         text-align: center;
         font-weight: bold;
         z-index: -2;
@@ -207,6 +211,7 @@ nav{
             padding-top:8vh;
             flex: 1 1 8vh;
             text-align: center;
+            line-height: 2rem;
             writing-mode: vertical-lr;
         }
         img{
