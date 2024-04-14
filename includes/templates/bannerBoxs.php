@@ -1,4 +1,5 @@
 <?php
+foreach ($news as $new):
 $date = new DateTime($new['time']);
 $formatted_date = $date->format('Y/m/d');
 ?>
@@ -11,3 +12,7 @@ $formatted_date = $date->format('Y/m/d');
         <p class="optional"><?= $new['instruction']?></p>
     </div>
 </div>
+
+<?php
+endforeach;
+?>

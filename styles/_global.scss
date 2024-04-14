@@ -33,7 +33,15 @@ a{
     text-decoration: none;
     color: $color1;
 }
-
+input{
+    border: none;
+    background-color: transparent;
+    font-family: "Poppins", "HYWenHei", sans-serif;
+    caret-color: $color2;
+}
+input:focus{
+    outline: none;
+}
 //网页载入动画
 .tranAniContatiner{
     background: $color1;
@@ -222,7 +230,7 @@ nav{
     }
     .content{
         height: 92vh;
-        padding: 2.8rem 2.8rem 2.8rem max(5.625rem, calc(8vh + 2.8rem));
+        padding: 2.8rem 2.8rem 2.8rem  calc(max(5.625rem, min(8vh, 8rem)) + 2.8rem);
         transform: translateY(0);
         transition: transform 0.4s ease;
         overflow-y: auto;
@@ -257,4 +265,43 @@ footer{
 }
 #footer_left{
     justify-content: flex-start;
+}
+
+#searchButton{
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 5rem;
+    width: 5rem;
+    margin-bottom: 2rem;
+    @include normal-box();
+    @include flex(flex-start, center, row);
+    img{
+        margin: 1rem;
+        height: 3rem;
+    }
+    input{
+        display: none;
+    }
+}
+#searchButtonFocus{
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 5rem;
+    margin-bottom: 2rem;
+    @include normal-box();
+    @include flex(flex-start, center, row);
+    width: 65vw;
+    backdrop-filter: blur(0.4rem);
+    img{
+        margin: 1rem;
+        height: 3rem;
+    }
+    input{
+        display: block;
+    }
+}
+#searchButton:hover{
+    @include hover-box();
 }

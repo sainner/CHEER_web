@@ -21,12 +21,9 @@
         <div class="container">
             <?php include_once './includes/templates/sidebar.php';?>
             <section class="content" id="homepage">
-                <?php 
-                foreach ($news as $new):
-                include './includes/templates/newsBox.php';
-                endforeach;
-                ?>
+                <?php include './includes/templates/bannerBoxs.php';?>
             </section>
+            <div id="modelContainer"></div>
         </div>
     </body>
     <?php
@@ -34,7 +31,10 @@
     include_once './includes/templates/footer.php';
     ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="./script/general.js"></script>
+    <script src="https://unpkg.com/three@0.125.2/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.125.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="../script/general.js"></script>
+    <script src="../script/modelController.js"></script>
     <script>
         //起始第二个新闻为active
         document.querySelectorAll('.news')[1].classList.add('active');
