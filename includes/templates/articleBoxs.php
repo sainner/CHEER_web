@@ -2,15 +2,24 @@
 foreach ($results as $row) :
     $imageNames = explode(', ', $row['name_suffix'] ?? '');
     $alter_texts = explode(', ', $row['alter_texts'] ?? '');
+    $authors = null;
+    $authors = $row['author_names'];
+    if (!is_null($row['other_authors'])) {
+        $authors = ', '. $row['other_authors'];
+    }
+    $journalDetails = null;
+    if (!is_null($row['volumn&pages'])){
+        $journalDetails = ', '. $row['volumn&pages'];
+    }
 ?>
 
 <div class = "articleBoxWithFigures">
     <article class="articleBox fadein">
         <h2><?= $row['title']?></h2>
-        <p class="authors"><?= $row['author_names']. ', '. $row['other_authors']?></p>
+        <p class="authors"><?= $authors?></p>
         <div class="journalBox">
             <p class="journalName"><?= $row['journal']?></p>
-            <p class="journalDetails"><span class="year"><?= $row['time']?></span> ,<span><?= $row['volumn&pages']?></span></p>
+            <p class="journalDetails"><span class="year"><?= $row['time']?></span><span><?= $journalDetails?></span></p>
         </div>
         <p class="abstract"><?= $row['abstract']?></p>
     </article>

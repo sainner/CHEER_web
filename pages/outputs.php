@@ -1,4 +1,5 @@
 <?php 
+    $kind = isset($_GET['kind']) && is_numeric($_GET['kind']) ? $_GET['kind'] : null;
     require "../includes/config.php";
     $conn = require_once '../includes/database.php';
     $current_page = basename($_SERVER['PHP_SELF']);
@@ -11,9 +12,17 @@
             FROM Outputs o 
             LEFT JOIN outputs_members om ON o.output_id = om.output_id 
             LEFT JOIN Members m ON om.member_id = m.member_id 
-            LEFT JOIN Pictures p ON p.outputs_id = o.output_id 
-            GROUP BY o.output_id;";
+            LEFT JOIN Pictures p ON p.outputs_id = o.output_id ";
+
+    if ($kind !== null) {
+    $sql .= " WHERE o.kind = :kind";
+    }
+    $sql .= " GROUP BY o.output_id;";    
+    
     $stmt = $conn->prepare($sql);
+    if ($kind !== null) {
+        $stmt->bindParam(':kind', $kind, PDO::PARAM_INT);
+    }
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

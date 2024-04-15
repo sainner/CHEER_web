@@ -1,7 +1,7 @@
 #outputsContainer{
     overflow-y: auto;
     width: 100vw;
-    position: relative;//search bar position fix
+    position: relative; //search bar position fix
 }
 .articleBoxWithFigures{
     width: 100%;
@@ -31,7 +31,7 @@
     .journalBox{
         width: 100%;
         margin-bottom: 4rem;
-    padding: 0.5rem calc(1rem + $padding);
+        padding: 0.5rem calc(1rem + $padding);
         .journalName{
             font-size: 1.2rem;
             line-height: 1.4rem;

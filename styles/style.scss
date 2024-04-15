@@ -28,6 +28,7 @@ $color4: #E8F5E9;
   outline: 0.3rem solid $color2;
   outline-offset: -0.3rem;
   box-shadow: 0 0 8rem rgba(0,0,0,0.2);
+  -webkit-backdrop-filter: blur(0.2rem);
   backdrop-filter: blur(0.2rem);
 }
 
@@ -37,8 +38,9 @@ $color4: #E8F5E9;
 @import "home_page";
 @import "aboutus_page";
 @import "outputs_page";
+@import "news_page";
+
 /*
-@import "outputs_page";
 @import "members_page";
 @import "enrollment_page";
 */
@@ -97,7 +99,9 @@ $color4: #E8F5E9;
       padding: 1rem 0 2rem 0;
     }
   }
-
+  #searchButtonFocus{
+    width: 100%;
+  }
   //homepage
   .homepage{
     .news{
@@ -142,24 +146,29 @@ $color4: #E8F5E9;
   }
 
   // outputs
-.articleBoxWithFigures{
-  flex-direction: column;
-}
-.articleBox{
-  width: 100%;
-}
-.figures{
-  width: 100%;
-  height: 15vh;
-  margin: 1rem 0;
-  @include flex(space-between, flex-start, row);
-  flex-wrap: nowrap;
-  img{
-    width: auto;
-    height: 100%;
-    object-fit: cover;
-    max-width: none;
-    flex: 1;
+  .articleBoxWithFigures{
+    flex-direction: column;
   }
+  .articleBox{
+    width: 100%;
+  }
+  .figures{
+    width: 100%;
+    height: 15vh;
+    margin: 1rem 0;
+    @include flex(space-between, flex-start, row);
+    flex-wrap: nowrap;
+    img{
+      width: auto;
+      height: 100%;
+      object-fit: cover;
+      max-width: none;
+      flex: 1;
+    }
+  }
+
+//news
+.newsBox{
+  width: 100%;
 }
 }

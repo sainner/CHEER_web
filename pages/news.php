@@ -1,7 +1,16 @@
 <?php 
     require "../includes/config.php";
+    $conn = require_once '../includes/database.php';
     $current_page = basename($_SERVER['PHP_SELF']);
-    include '../includes/templates/head.php';
+    $modified_page = str_replace(".php", "", $current_page);
+
+    $sql = "SELECT n.*, p.* FROM News n
+            LEFT JOIN Pictures p ON n.news_id = p.news_id;";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    include_once '../includes/templates/head.php';
     ?>
     <body>
         <div class="tranAniContatiner">
@@ -11,18 +20,14 @@
         <?php include_once '../includes/templates/header.php';?>
         <div class="container">
             <?php include_once '../includes/templates/sidebar.php';?>
-            <section class="content" id="news">
-            <div class="outputsContainer">
-                <article class="outputsBox">
-                    <h2>Research on the application of quantum computing in the discovery of new materials</h2>
-                    <p class="authors">Can Liao, Chad E. Hoyer, Rahoul Banerjee Ghosh, Andrew J. Jenkins, Stefan Knecht, Michael J. Frisch, and Xiaosong Li</p>
-                    <div class="journalBox">
-                        <p class="journalName">The Journal of Physical Chemistry A</p>
-                        <p class="journalDetails"><span class="year">2024</span> ,<span>383, 6687,1118-1122</span></p>
-                    </div>
-                    <p class="content">This research was co-authored by an interdisciplinary team from the Future Lab to explore the potential of quantum computing technologies in the field of novel materials discovery. With the rapid development of quantum computing technology, it has shown revolutionary application prospects in many scientific research fields, especially in the design and discovery of new materials, quantum computing provides an unprecedented computing power and efficiency.By constructing an efficient quantum algorithm, this study successfully simulates the quantum behavior of complex materials, which provides a new way to understand the intrinsic properties of materials and accelerate the design of new materials. The research team has focused on overcoming the key technical problems of quantum computing in dealing with large-scale material database search, material property prediction, and exploration of the synthesis path of new materials, which has significantly improved the efficiency and accuracy of new material discovery.</p>
-                </article>
-            </div>
+            <section class="content" id="outputsContainer">
+                <div id="searchButton">
+                    <img id="searchIcon" src="<?=BASE_URL?>images/icon/search.svg" alt="search_icon">
+                    <input type="text" id="searchInput" placeholder="请输入关键词">
+                </div>
+                <div id="<?=$modified_page?>">
+                <?php include_once '../includes/templates/newsBoxs.php';?>
+                </div>
             </section>
             <div id="modelContainer"></div>
         </div>
@@ -37,8 +42,10 @@
     <script src="../script/general.js"></script>
     <script src="../script/modelController.js"></script>
     <script>
-        drawSlashes("journalBox", "white", 15);
         window.addEventListener('resize', function() {drawSlashes("journalBox", "white", 15);});
-        addSectorToCorner('.outputsBox', '右上', '80');
+        addSectorToCorner('.newsBox', '右上', '80');
+
+        //每个页面初始化搜索功能
+        initializeSearch('<?=$modified_page?>', '<?=$modified_page?>');
     </script>
 </html>

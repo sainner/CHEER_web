@@ -340,6 +340,7 @@ footer p {
 }
 
 #searchButton {
+  z-index: 1;
   position: sticky;
   top: 0;
   left: 0;
@@ -397,7 +398,7 @@ footer p {
   outline-offset: -0.3rem;
   box-shadow: 0 0 8rem rgba(0, 0, 0, 0.2);
   -webkit-backdrop-filter: blur(0.2rem);
-          backdrop-filter: blur(0.2rem);
+  backdrop-filter: blur(0.2rem);
 }
 
 #homepage {
@@ -638,7 +639,7 @@ footer p {
   outline-offset: -0.3rem;
   box-shadow: 0 0 8rem rgba(0, 0, 0, 0.2);
   -webkit-backdrop-filter: blur(0.2rem);
-          backdrop-filter: blur(0.2rem);
+  backdrop-filter: blur(0.2rem);
 }
 
 .figures {
@@ -656,8 +657,67 @@ footer p {
   outline-offset: -0.1rem;
 }
 
+.newsBox {
+  position: relative;
+  width: 65vw;
+  padding: 4rem 0;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  box-shadow: 0 0 6rem rgba(0, 0, 0, 0.1);
+  outline: 0.1rem solid white;
+  outline-offset: -0.1rem;
+  transition: all 0.2s ease-in-out;
+}
+.newsBox img {
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -2;
+}
+.newsBox .blur {
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(247, 247, 247, 0.8);
+  backdrop-filter: blur(0.2rem);
+  -webkit-backdrop-filter: blur(0.2rem);
+  z-index: -1;
+}
+.newsBox h2 {
+  line-height: 3.3rem;
+  margin-bottom: 1rem;
+  padding: 0 4.5rem;
+}
+.newsBox p {
+  padding: 0 4.5rem;
+}
+.newsBox .time {
+  font-size: 1.2rem;
+  color: #B71C1C;
+  line-height: 1.2rem;
+  margin-bottom: 2rem;
+  padding: 0 4.5rem;
+}
+
+.newsBox:hover {
+  outline: 0.3rem solid #B71C1C;
+  outline-offset: -0.3rem;
+  box-shadow: 0 0 8rem rgba(0, 0, 0, 0.2);
+}
+.newsBox:hover .blur {
+  backdrop-filter: blur(0.4rem);
+  -webkit-backdrop-filter: blur(0.4rem);
+  background-color: rgba(247, 247, 247, 0.9);
+}
+
 /*
-@import "outputs_page";
 @import "members_page";
 @import "enrollment_page";
 */
@@ -711,6 +771,9 @@ footer p {
     flex: 1 1 1000rem;
     border-left: none;
     padding: 1rem 0 2rem 0;
+  }
+  #searchButtonFocus {
+    width: 100%;
   }
   .homepage .news {
     flex: 0 0 90vw;
@@ -770,5 +833,8 @@ footer p {
        object-fit: cover;
     max-width: none;
     flex: 1;
+  }
+  .newsBox {
+    width: 100%;
   }
 }/*# sourceMappingURL=style.css.map */

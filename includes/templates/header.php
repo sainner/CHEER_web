@@ -11,9 +11,9 @@
                 <a href="<?= BASE_URL;?>pages/outputs.php" class="text_hover nextPageLink" >
                 研究成果</a>
                 <ul class="submenu">
-                    <li><a href="#" class="text_hover nextPageLink">
+                    <li><a href="<?= BASE_URL;?>pages/outputs.php?kind=0" class="text_hover nextPageLink">
                         论文成果</a></li>
-                    <li><a href="#" class="text_hover nextPageLink">
+                    <li><a href="<?= BASE_URL;?>pages/outputs.php?kind=1" class="text_hover nextPageLink">
                         实践成果</a></li>
                 </ul>
             </li>
