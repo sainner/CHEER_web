@@ -21,9 +21,9 @@
         <div class="container">
             <?php include_once '../includes/templates/sidebar.php';?>
             <section class="content" id="outputsContainer">
-                <div id="searchButton">
-                    <img id="searchIcon" src="<?=BASE_URL?>images/icon/search.svg" alt="search_icon">
-                    <input type="text" id="searchInput" placeholder="请输入关键词">
+                <div class="searchButton">
+                    <img class="searchIcon" src="<?=BASE_URL?>images/icon/search.svg" alt="search_icon">
+                    <input type="text" class="searchInput" placeholder="请输入关键词">
                 </div>
                 <div id="<?=$modified_page?>">
                 <?php include_once '../includes/templates/newsBoxs.php';?>
@@ -42,7 +42,6 @@
     <script src="../script/general.js"></script>
     <script src="../script/modelController.js"></script>
     <script>
-        window.addEventListener('resize', function() {drawSlashes("journalBox", "white", 15);});
         addSectorToCorner('.newsBox', '右上', '80');
 
         //每个页面初始化搜索功能

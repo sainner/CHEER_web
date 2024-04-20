@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 // 连接数据库和处理请求（示例代码，需要根据实际情况调整）
 require "config.php";
 $conn = require_once 'database.php';
@@ -35,14 +35,22 @@ ob_start(); // 开始缓冲输出
 switch($_GET['current_page']?? ''){
     case 'outputs':
         require "templates/articleBoxs.php";
+        $html = ob_get_clean();
+        echo $html;
         break;
     case 'news':
         require "templates/newsBoxs.php";
+        $html = ob_get_clean();
+        echo $html;
         break;
     case'members':
         require "templates/memberBoxs.php";
+        $html = ob_get_clean();
+        $response = [
+            'html' => $html,
+            'members' => $results  // 或者任何你需要更新前端的数据
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($response);
         break;
 }
-$html = ob_get_clean(); // 获取缓冲输出并清理缓冲区
-
-echo $html; // 返回渲染后的 HTML

@@ -104,8 +104,8 @@ function initializeAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        if (count < 4) { // 只为前三个元素设置延迟
-          const delay = count * 0.5; // 延迟递增，每个0.5秒
+        if (count < 5) { 
+          const delay = count * 0.2; // 延迟递增，每个0.5秒
           entry.target.style.animationDelay = `${delay}s`;
         }
         entry.target.classList.add('start');
@@ -114,8 +114,8 @@ function initializeAnimations() {
       }
     });
   }, {
-    rootMargin: '50px',
-    threshold: 0.1
+    rootMargin: '80px',
+    threshold: 0.05
   });
 
   fadeElements.forEach(element => {
@@ -328,20 +328,38 @@ function drawSlashes(classname, stoke_color = "#ffca28", line_tensity=60){
 function submitSearch(current_page, input, div_id) {
   const url = `../includes/search.php?current_page=${encodeURIComponent(current_page)}&key_words=${encodeURIComponent(input.value)}`;
   fetch(url)
-  .then(response => response.text())
-  .then(html => {
-    const results = document.getElementById(div_id);
-    results.innerHTML = html; // 直接设置 HTML 内容
-    initializeAnimations(); // 重新初始化动画效果
+  .then(response => {
+    // 根据响应头判断是返回JSON还是HTML
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+        return response.json();  // 如果是JSON，解析为JSON
+    } else {
+        return response.text();  // 如果是HTML，解析为文本
+    }
 })
+  .then(data => {
+    const results = document.getElementById(div_id);
+    if (typeof data === 'object') {  // 处理JSON响应
+      results.innerHTML = data.html;  // 更新HTML
+      membersData = data.members;  // 更新成员数据，以供后续使用
+      updateMemberContent(0);
+      scrollAni();  // 重新初始化滚动动画
+      drawSlashes("nameNposition", "white", 15);
+      drawSlashes("timePoint", "#DB5C5C", 8); //初始化图形
+    } else {
+      results.innerHTML = data;  // 直接设置HTML
+    }
+    initializeAnimations();  // 重新初始化动画效果
+    drawSlashes("journalBox", "white", 15);
+  })
   .catch(error => console.error('Error:', error));
 }
 
 //searchButton展开成搜索框
 function initializeSearch(current_page, div_id) {
-  const searchButton = document.getElementById('searchButton');
-  const searchIcon = document.getElementById('searchIcon');
-  const searchInput = document.getElementById('searchInput');
+  const searchButton = document.querySelector('.searchButton');
+  const searchIcon = document.querySelector('.searchIcon');
+  const searchInput = document.querySelector('.searchInput');
 
   iconSearch = function() {
     submitSearch(current_page, searchInput, div_id);
@@ -362,8 +380,8 @@ function initializeSearch(current_page, div_id) {
 
     // 添加全局点击事件监听器来检测点击外部区域
     function globalClickListener(event) {
-      if (event.target.id !== 'searchButtonFocus' && event.target.id !== 'searchIcon' && event.target !== searchInput) {
-        searchButton.id = 'searchButton';
+      if (event.target.id !== 'searchButtonFocus' && event.target.classList[0] !== 'searchIcon' && event.target !== searchInput) {
+        searchButton.id = '';
         document.removeEventListener('click', globalClickListener);
         searchButton.addEventListener('click', firstClick);
         searchIcon.removeEventListener('click', iconSearch);

@@ -2,6 +2,7 @@
     @include flex(center, center, row);
     flex-wrap: wrap-reverse;
     #info{
+        max-width: 105rem;
         margin: 5rem;
         flex : 8 1 30rem;
         @include flex(flex-start, flex-start, column);

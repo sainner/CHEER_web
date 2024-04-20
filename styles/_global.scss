@@ -12,7 +12,7 @@ body {
     color: $color1;
 }
 body::-webkit-scrollbar {
-    width: 0;
+   width: 0;
 }
 h1{
     font-size: $header1;
@@ -94,7 +94,9 @@ a.text_hover:hover::after{
     font-weight: lighter;
     color: $color2;
 }
-
+[onclick] {
+    cursor: pointer;
+}
 #sjtu_logo{
     width: 18rem;
 }
@@ -108,6 +110,9 @@ a.text_hover:hover::after{
 header{
     width: 100%;
     margin: 0 0 0 auto;
+    position: sticky;
+    z-index: 11;
+    top: 0;
 }
 
 nav{
@@ -119,8 +124,7 @@ nav{
     width: 100%;
     background-color: $color3;
     position: sticky;
-    top: 0;
-    z-index: 11;
+    z-index: 5000;
     .LOGO{
         @include flex(flex-start, center, row);
         flex: 1 1 5.625rem;
@@ -133,6 +137,7 @@ nav{
         p{
             margin: 0 0 0 2rem;
             font-size: 2.5rem;
+            line-height: 2.3rem;
         }
     }
     ul{
@@ -198,13 +203,8 @@ nav{
         }
     }
 }
-
-
 .container{
-    overflow: hidden;
-    @include flex(space-between, flex-start, row);
     .side_bar{
-        flex: 0 0 8vh;
         width: 8vh;
         min-width: 5.625rem;
         max-width: 8rem;
@@ -225,18 +225,22 @@ nav{
         img{
             flex: 0 0 8vh;
             width: 8vh;
+            height: 8vh;
             min-width: 5.625rem;
-        }
+            max-width: 8rem;
+            min-height: 5.625rem;
+            max-height: 8rem;
+            }
     }
     .content{
-        height: 92vh;
         padding: 2.8rem 2.8rem 2.8rem  calc(max(5.625rem, min(8vh, 8rem)) + 2.8rem);
         transform: translateY(0);
         transition: transform 0.4s ease;
-        overflow-y: auto;
+        position: relative;
     }
     #modelContainer{
         position: fixed;
+        top: 0;
         z-index: -3;
         width: 100vw;
         height: 100vh;
@@ -267,11 +271,9 @@ footer{
     justify-content: flex-start;
 }
 
-#searchButton{
-    z-index: 1;
+.searchButton{
+    z-index: 100;
     position: sticky;
-    top: 0;
-    left: 0;
     height: 5rem;
     width: 5rem;
     margin-bottom: 2rem;
@@ -286,23 +288,17 @@ footer{
     }
 }
 #searchButtonFocus{
-    position: sticky;
-    top: 0;
-    left: 0;
-    height: 5rem;
-    margin-bottom: 2rem;
-    @include normal-box();
-    @include flex(flex-start, center, row);
     width: 65vw;
+    -webkit-backdrop-filter: blur(0.4rem);
     backdrop-filter: blur(0.4rem);
-    img{
-        margin: 1rem;
-        height: 3rem;
-    }
     input{
         display: block;
     }
 }
-#searchButton:hover{
+.searchButton:hover{
     @include hover-box();
+}
+
+.noData{
+    text-align: center;
 }

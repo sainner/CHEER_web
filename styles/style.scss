@@ -39,9 +39,10 @@ $color4: #E8F5E9;
 @import "aboutus_page";
 @import "outputs_page";
 @import "news_page";
+@import "members_page";
+
 
 /*
-@import "members_page";
 @import "enrollment_page";
 */
 
@@ -62,6 +63,53 @@ $color4: #E8F5E9;
 .fadein.start {
   animation: fadeInUp 0.8s ease-out forwards;
 }
+
+@keyframes scrollAni {
+  0% {
+    transform: translateX(-7vw) scale(1.16);
+    opacity: 0;
+    filter: blur(1rem);
+    @include normal-box();
+  }
+  17%{
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    filter: none;
+    @include hover-box();
+  }
+  33%{
+    transform: translateX(10vw) scale(0.84);
+    opacity: 0.8;
+    filter: none;
+    @include normal-box();
+  }
+  50%{
+    transform: translateX(18vw) scale(0.68);
+    opacity: 0.6;
+    filter: none;
+    @include normal-box();
+  }
+  67%{
+    transform: translateX(24vw) scale(0.52);
+    opacity: 0.4;
+    filter: none;
+    @include normal-box();
+  }
+  83%{
+    transform: translateX(28vw) scale(0.36);
+    opacity: 0.2;
+    filter: none;
+    @include normal-box();
+  }
+  100% {
+    transform: translateX(30vw) scale(0);
+    opacity: 0;
+    filter: blur(1rem);
+  }
+}
+//.memberBoxContainer{
+ // animation: scrollAni 3s linear infinite paused;
+//}
 //响应性
 
 @media only screen and (max-width: 850px) {
@@ -97,6 +145,14 @@ $color4: #E8F5E9;
       flex: 1 1 1000rem;
       border-left: none;
       padding: 1rem 0 2rem 0;
+      text-align: end;
+    }
+  }
+  #footer_left{
+    padding: 0 1.5rem;
+    p{
+      text-align: start;
+      margin-left: 1.5rem;
     }
   }
   #searchButtonFocus{
@@ -167,8 +223,25 @@ $color4: #E8F5E9;
     }
   }
 
-//news
-.newsBox{
-  width: 100%;
+  //news
+  .newsBox{
+    width: 100%;
+  }
+  //members
+  .personalOutputs{
+    display: none;
+  }
+  #members{
+    .memberBoxs{
+      flex: 1 0 12%;
+      margin: 0;
+    }
+    .memberBox{
+      background-color: $color3;
+    }
+    .education{
+      opacity: 1;
+    }
+  } 
 }
-}
+

@@ -1,5 +1,5 @@
 #homepage{
-    padding: 2.8rem 1.8rem 2.8rem calc(8vh + 1.8rem);
+    padding: 2.8rem 1.8rem 2.8rem calc(max(5.625rem, min(8vh, 8rem)) + 1.8rem);
     @include flex(space-between, flex-start, row);
     flex-wrap: wrap;
     overflow: hidden;

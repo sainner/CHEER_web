@@ -22,13 +22,13 @@
             <li id="<?= ($current_page == 'members.php')? 'current' : '' ?>" class="deployable sub3"><a href="<?= BASE_URL;?>pages/members.php" class="text_hover nextPageLink" >
                 团队成员</a>
                 <ul class="submenu">
-                    <li><a href="#" class="text_hover nextPageLink">
+                    <li><a href="<?= BASE_URL;?>pages/members.php?position=0" class="text_hover nextPageLink">
                         在职教师</a></li>
-                    <li><a href="#" class="text_hover nextPageLink">
+                    <li><a href="<?= BASE_URL;?>pages/members.php?position=2" class="text_hover nextPageLink">
                         硕士研究生</a></li>
-                    <li><a href="#" class="text_hover nextPageLink">
+                    <li><a href="<?= BASE_URL;?>pages/members.php?position=3" class="text_hover nextPageLink">
                         博士研究生</a></li>
-                    <li><a href="#" class="text_hover nextPageLink">
+                    <li><a href="<?= BASE_URL;?>pages/members.php?position=4" class="text_hover nextPageLink">
                         博士后</a></li>
                 </ul>
             </li>

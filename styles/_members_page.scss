@@ -1,0 +1,176 @@
+.membersContainer{
+    height: calc(100vh - max(5.625rem, min(8vh, 8rem)));
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+#membersContent{
+    height: calc(100vh - max(5.625rem, min(8vh, 8rem)));
+    position: sticky;
+    top: 0;
+}
+#members{
+    width: 100%;
+    height: calc(100% - 7rem);
+    padding-bottom: 8rem;
+    @include flex(flex-start, center, row);
+    //flex-wrap: wrap;
+    //scrollbar-width: none;
+    //overflow-x: scroll;
+    .memberBoxs{
+        flex: 0 0 12%;
+        height: 100%;
+        position: relative;
+        overflow: visible;
+        margin:0 3rem 0 5rem;
+    }
+    .memberBoxContainer{
+        height: 100%;
+        position: absolute;
+        left: 0;
+        @include normal-box();
+        background-color: transparent;
+        box-shadow: 0 0 6rem rgba(0,0,0,0.1);
+        //transform: translateX(-6vw) scale(1.16);
+        //filter: blur(1rem);
+        //opacity: 0;
+    }
+    .memberBox{
+        z-index: -11;
+        @include flex(space-between, center, column);
+        height: 100%;
+        background-color: rgba($color: #f7f7f7, $alpha: 0.8);
+        position: relative;
+        .profile{
+            width: 100%;
+            height: 0;
+            flex-grow: 1;
+            flex-shrink: 1;
+            img{
+                position: relative;
+                z-index: -10;
+                width: 100%;
+                min-height: 100%;
+                max-height: 110%;
+                object-fit: cover;
+            }
+        }
+        .nameNposition{
+            background-color: rgba($color: #f7f7f7, $alpha: 0.8);
+            padding: 0.5rem 0;
+            align-self: flex-start;
+            width: 100%;
+            position: relative;
+            h2{
+                z-index: 10;
+                position: absolute;
+                color: $color2;
+                font-size: 3rem;
+                text-shadow: -1px 0 #f7f7f7, 0 1px #f7f7f7, 1px 0 #f7f7f7, 0 -1px #f7f7f7;
+                justify-self: flex-start;
+                line-height: 3rem;
+                padding: 0 2rem;
+                transform: translateY(-50%);
+            }
+            p{
+                padding: 2rem 2rem 0 2rem;
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        }
+        .detailInfo{
+            height: 60%;
+            @include flex(space-between, center, column);
+            padding: 0 1rem;
+            p{
+                font-size: 1.8rem;
+            }
+            .personalTitle{
+                padding-top: 1rem;
+                text-align: center;
+            }
+            .contact{
+                @include flex(center, center, column);
+                p{
+                    text-wrap: wrap;
+                    text-align: center;
+                    line-height: 2rem;
+                }
+            }
+            .otherContacts{
+                padding-bottom: 3rem;
+            }
+        }
+    }
+    .education{
+        opacity: 0;
+        z-index: 30;
+        pointer-events: none;
+        padding: 2rem 4rem;
+        @include normal-box();
+        background-color: rgba($color: #f7f7f7, $alpha: 0.9);
+        height: 100%;
+        flex: 1 1 24rem;
+        .educationItem{
+            margin-bottom: 1rem;
+            @include flex(flex-start, center, row);
+            width: 100%;
+            height: 5rem;
+            .timePoint{
+                height: 100%;
+                aspect-ratio: 1/1;
+                background-color: $color2;
+                color: $color3;
+                text-align: center;
+                line-height: 5rem;
+                font-weight: bold;
+                margin: 0 1rem;
+            }
+            .event{
+                line-height: 1.6rem;
+            }
+        }
+    }
+    .personalOutputs{
+        height: 100%;
+        overflow-y: auto;
+        scrollbar-width: none;
+        padding: 0 5rem;
+        position: relative;
+        h3{
+            padding: 0 1.5rem;
+            margin: 6rem 0 1.5rem 0;
+            position: sticky;
+        }
+        flex: 1 1 35vw;
+        .articleBox{
+            $padding: 3rem;
+            width: 100%;
+            padding: 3rem 0;
+            h2{
+                font-size: 2.5rem;
+                line-height: 2.5rem;
+                padding: 0 $padding;
+            }
+            .authors{
+                padding: 0 $padding;
+                margin-bottom: 2rem;
+            }
+            .journalBox{
+                margin-bottom: 0;
+                padding: 0 $padding;
+            }
+        }
+        .articleBox:hover{
+            @include hover-box();
+        }
+    }
+}
+.moreDetails{
+    font-size: 3rem;
+    color: $color2;
+    margin: 4rem 0 2rem 0;
+    .englishTitle{
+        font-size: 2rem;
+        font-weight: lighter;
+    }
+}

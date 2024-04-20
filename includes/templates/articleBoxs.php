@@ -4,11 +4,11 @@ foreach ($results as $row) :
     $alter_texts = explode(', ', $row['alter_texts'] ?? '');
     $authors = null;
     $authors = $row['author_names'];
-    if (!is_null($row['other_authors'])) {
-        $authors = ', '. $row['other_authors'];
+    if ($row['other_authors'] != ' ') {
+        $authors .= ', '. $row['other_authors'];
     }
     $journalDetails = null;
-    if (!is_null($row['volumn&pages'])){
+    if ($row['volumn&pages'] != ' '){
         $journalDetails = ', '. $row['volumn&pages'];
     }
 ?>
